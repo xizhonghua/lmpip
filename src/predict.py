@@ -77,7 +77,7 @@ test_scores = []
 for i in range(0, 10):
     Xtr, Xts, ytr, yts = train_test_split(train, labels, test_size=.2)
 
-    clf = xgb.XGBRegressor(max_depth=6, n_estimators=100)
+    clf = xgb.XGBRegressor(gamma=1, min_child_weight=5, max_depth=3, n_estimators=500, nthread=8)
 
     clf.fit(Xtr, ytr)
     ytp = clf.predict(Xtr)
